@@ -101,6 +101,9 @@
         <th field="id" width="50" align="center">编号</th>
         <th field="userName" width="100" align="center">姓名</th>
         <th field="mobile" width="100" align="center">手机号码</th>
+        <th field="demands" width="100" align="center">咨询项目</th>
+        <th field="createDate" width="100" align="center">创建时间</th>
+        <th field="updateDate" width="100" align="center">更新时间</th>
     </tr>
     </thead>
 </table>
@@ -134,12 +137,27 @@
                 </td>
             </tr>
             <tr>
-                <td>手机号码：</td>
-                <td><input type="text" id="mobile" name="mobile"
+                <td>咨询项目：</td>
+                <td><input type="text" id="demands" name="demands"
                            class="easyui-validatebox" required="true"/>&nbsp;<font
                         color="red">*</font>
                 </td>
             </tr>
+            <tr>
+                <td>创建时间：</td>
+                <td><input type="text" id="createDate" name="createDate"
+                           class="easyui-validatebox" required="true"/>&nbsp;<font
+                        color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td>更新时间：</td>
+                <td><input type="text" id="updateDate" name="updateDate"
+                           class="easyui-validatebox" required="true"/>&nbsp;<font
+                        color="red">*</font>
+                </td>
+            </tr>
+            
         </table>
     </form>
 </div>
