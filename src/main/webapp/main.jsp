@@ -5,16 +5,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>ssm-maven系统主页</title>
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/jquery-easyui-1.3.3/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/jquery-easyui-1.3.3/themes/icon.css">
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
+    
+    <!--easyui js与cess导入  -->
+    <%@include file="/views/admin/common/easyui.jsp" %>
+    
+    
     <script type="text/javascript">
         var url;
         function addTab(url, text, iconCls) {
@@ -116,6 +111,7 @@
                     data-options="plain:true,iconCls:'icon-shuben'"
                     style="width: 150px;">全部书籍</a>
         </div>
+        
         <div title="系统管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
             <a href="javascript:openTab(' 管理员列表','userManage.jsp','icon-lxr')"
@@ -127,6 +123,23 @@
                             style="width: 150px;">
             安全退出</a>
         </div>
+        
+        
+          <div title="留言管理" data-options="iconCls:'icon-item'"
+             style="padding:10px;border:none;">
+            <a href="javascript:openTab(' 留言列表','/admin/message/list.jsp','icon-lxr')"
+               class="easyui-linkbutton"
+               data-options="plain:true,iconCls:'icon-lxr'" style="width: 150px;">
+                管理员列表</a><a href="javascript:logout()"
+                            class="easyui-linkbutton"
+                            data-options="plain:true,iconCls:'icon-exit'"
+                            style="width: 150px;">
+            安全退出</a>
+        </div>
+        
+        
+        
+        
     </div>
 </div>
 </body>
