@@ -12,9 +12,39 @@
         <result property="updateDate" column="update_date"/>
     </resultMap>
 
+
     <select id="select" parameterType="java.util.Map" resultMap="MessageResult">
-		SELECT * FROM admin_message;
+		SELECT id,user_name,mobile,demands,create_date,update_date FROM admin_message 
+		<where>
+            <if test="userName!=null and userName!='' ">
+                and user_name = '%${userName}%'
+            </if>
+            <if test="mobile!=null and mobile!='' ">
+                and mobile like '%${mobile}%'
+            </if>
+            <if test="demands!=null and demands!='' ">
+                and demands like '%${demands}%'
+            </if>
+        </where>
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
 	</select>
 	
+	 <select id="count" parameterType="Map" resultType="int">
+        select count(*) from admin_message
+        <where>
+            <if test="userName!=null and userName!='' ">
+                and user_name = '%${userName}%'
+            </if>
+            <if test="mobile!=null and mobile!='' ">
+                and mobile like '%${mobile}%'
+            </if>
+            <if test="demands!=null and demands!='' ">
+                and demands like '%${demands}%'
+            </if>
+        </where>
+    </select>
+    
 	
 </mapper> 

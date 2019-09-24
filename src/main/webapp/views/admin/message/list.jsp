@@ -7,13 +7,17 @@
     <title>留言列表</title>
    <!--easyui js与cess导入  -->
     <%@include file="/views/admin/common/easyui.jsp" %>
+    <script type="text/javascript" src="/js/date.js"></script>
     
     <script type="text/javascript">
+    
         var url;
-
         function searchUser() {
-            $("#dg").datagrid('load', {
-                "userName": $("#s_userName").val()
+            $("#dg").datagrid('load', 
+            {
+                "userName": $("#s_userName").val(),
+                "mobile": $("#s_mobile").val(),
+                "demands": $("#s_demands").val()
             });
         }
 
@@ -102,26 +106,19 @@
         <th field="userName" width="100" align="center">姓名</th>
         <th field="mobile" width="100" align="center">手机号码</th>
         <th field="demands" width="100" align="center">咨询项目</th>
-        <th field="createDate" width="100" align="center">创建时间</th>
-        <th field="updateDate" width="100" align="center">更新时间</th>
+        <th field="createDate" width="100" formatter="Common.DateFormatter">创建时间</th>
+        <th field="updateDate" width="100" align="center" formatter="Common.DateFormatter">更新时间</th>
     </tr>
     </thead>
 </table>
 <div id="tb">
     <div>
-        <a href="javascript:openUserAddDialog()" class="easyui-linkbutton"
-           iconCls="icon-add" plain="true">添加</a> <a
-            href="javascript:openUserModifyDialog()" class="easyui-linkbutton"
-            iconCls="icon-edit" plain="true">修改</a> <a
-            href="javascript:deleteUser()" class="easyui-linkbutton"
-            iconCls="icon-remove" plain="true">删除</a>
+        &nbsp;姓名：&nbsp;<input type="text" id="s_userName" size="20" onkeydown="if(event.keyCode==13) searchUser()"/> 
+        &nbsp;手机号码：&nbsp;<input type="text" id="s_mobile" size="20" onkeydown="if(event.keyCode==13) searchUser()"/> 
+        &nbsp;咨询项目：&nbsp;<input type="text" id="s_demands" size="20" onkeydown="if(event.keyCode==13) searchUser()"/> 
+        <a href="javascript:searchUser()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
     </div>
-    <div>
-        &nbsp;用户名：&nbsp;<input type="text" id="s_userName" size="20"
-                               onkeydown="if(event.keyCode==13) searchUser()"/> <a
-            href="javascript:searchUser()" class="easyui-linkbutton"
-            iconCls="icon-search" plain="true">搜索</a>
-    </div>
+    
 </div>
 
 <div id="dlg" class="easyui-dialog"
@@ -132,8 +129,8 @@
             <tr>
                 <td>姓名：</td>
                 <td><input type="text" id="userName" name="userName"
-                           class="easyui-validatebox" required="true"/>&nbsp;<font
-                        color="red">*</font>
+                           class="easyui-validatebox" required="true"/>&nbsp;
+                           <font color="red">*</font>
                 </td>
             </tr>
             <tr>
@@ -143,29 +140,9 @@
                         color="red">*</font>
                 </td>
             </tr>
-            <tr>
-                <td>创建时间：</td>
-                <td><input type="text" id="createDate" name="createDate"
-                           class="easyui-validatebox" required="true"/>&nbsp;<font
-                        color="red">*</font>
-                </td>
-            </tr>
-            <tr>
-                <td>更新时间：</td>
-                <td><input type="text" id="updateDate" name="updateDate"
-                           class="easyui-validatebox" required="true"/>&nbsp;<font
-                        color="red">*</font>
-                </td>
-            </tr>
-            
         </table>
     </form>
 </div>
 
-<div id="dlg-buttons">
-    <a href="javascript:saveUser()" class="easyui-linkbutton"
-       iconCls="icon-ok">保存</a> <a href="javascript:closeUserDialog()"
-                                   class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
-</div>
 </body>
 </html>

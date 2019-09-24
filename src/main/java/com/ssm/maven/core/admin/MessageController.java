@@ -33,32 +33,39 @@ public class MessageController {
 
     
 
+   
     /**
-     * @param page
-     * @param rows
-     * @param s_user
-     * @param response
-     * @return
-     * @throws Exception
-     */
+    * @Title: list
+    * @Description: 留言列表
+    * @param page
+    * @param rows
+    * @param s_message
+    * @param response
+    * @return
+    * @throws Exception
+    */
     @RequestMapping("/list")
-    @ResponseBody
-    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, User s_user, HttpServletResponse response) throws Exception {
-        Map<String, Object> map = new HashMap<String, Object>();
+    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, Message s_message, HttpServletResponse response) throws Exception {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
         if (page != null && rows != null) {
-            PageBean pageBean = new PageBean(Integer.parseInt(page),
-                    Integer.parseInt(rows));
-            map.put("start", pageBean.getStart());
-            map.put("size", pageBean.getPageSize());
+            PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
+            paramMap.put("start", pageBean.getStart());
+            paramMap.put("size",  pageBean.getPageSize());
         }
-        map.put("userName", StringUtil.formatLike(s_user.getUserName()));
-        List<Message> messageList = messageService.select(null);
-        Long total = 10l;
+        
+        paramMap.put("userName", s_message.getUserName());
+        paramMap.put("mobile", s_message.getMobile());
+        paramMap.put("demands", s_message.getDemands());
+        
+        int total = messageService.count(paramMap);
+        List<Message> messageList = null;
         JSONObject result = new JSONObject();
-        JSONArray jsonArray = JSONArray.fromObject(messageList);
-        result.put("rows", jsonArray);
-        result.put("total", total);
-        log.info("request: user/list , map: " + map.toString());
+        if(total > 0){
+        	 messageList = messageService.select(paramMap);
+             JSONArray jsonArray = JSONArray.fromObject(messageList);
+             result.put("rows", jsonArray);
+             result.put("total", total);
+        }
         ResponseUtil.write(response, result);
         return null;
     }
