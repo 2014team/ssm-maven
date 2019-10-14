@@ -16,15 +16,24 @@
     <select id="select" parameterType="java.util.Map" resultMap="MessageResult">
 		SELECT id,user_name,mobile,demands,create_date,update_date FROM admin_message 
 		<where>
-            <if test="userName!=null and userName!='' ">
-                and user_name like '%${userName}%'
-            </if>
-            <if test="mobile!=null and mobile!='' ">
-                and mobile like '%${mobile}%'
-            </if>
-            <if test="demands!=null and demands!='' ">
-                and demands like '%${demands}%'
-            </if>
+			<choose>
+				<when test="searchName != null and 'all' == searchName and null !=searchValue and ''!= searchValue">
+					or user_name like '%${searchValue}%'
+					or mobile like '%${searchValue}%'
+					or demands like '%${searchValue}%'
+				</when>
+				<otherwise>
+					<if test="userName!=null and userName!='' ">
+               			 and user_name like '%${userName}%'
+		            </if>
+		            <if test="mobile!=null and mobile!='' ">
+		                and mobile like '%${mobile}%'
+		            </if>
+		            <if test="demands!=null and demands!='' ">
+		                and demands like '%${demands}%'
+		            </if>
+				</otherwise>
+			</choose>
         </where>
         <if test="start!=null and size!=null">
             limit #{start},#{size}

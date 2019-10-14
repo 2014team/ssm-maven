@@ -25,12 +25,24 @@ public class MessageImpl extends BaseServiceImpl< Message, Integer> implements  
 		if(StringUtils.isNotBlank(searchName) && StringUtils.isNotBlank(searchValue) ){
 			// 获取类字段
 			Field[] fieldArr = Message.class.getDeclaredFields();
+			boolean flag = true;
 			for (Field field : fieldArr) {
 				String fieldName = field.getName();
 				if(searchName.equals(fieldName)){
+					flag  = false;
 					paramMap.put(fieldName, searchValue);
+					break;
 				}
 			}
+			
+			//all处理
+			if(flag){
+				paramMap.put("searchName", searchName);
+				paramMap.put("searchValue", searchValue);
+			}
+			
+			
+			
 		}
 	}
 		
