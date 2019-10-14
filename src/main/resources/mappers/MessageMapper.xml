@@ -17,7 +17,7 @@
 		SELECT id,user_name,mobile,demands,create_date,update_date FROM admin_message 
 		<where>
             <if test="userName!=null and userName!='' ">
-                and user_name = '%${userName}%'
+                and user_name like '%${userName}%'
             </if>
             <if test="mobile!=null and mobile!='' ">
                 and mobile like '%${mobile}%'
@@ -35,7 +35,7 @@
         select count(*) from admin_message
         <where>
             <if test="userName!=null and userName!='' ">
-                and user_name = '%${userName}%'
+                and user_name like '%${userName}%'
             </if>
             <if test="mobile!=null and mobile!='' ">
                 and mobile like '%${mobile}%'
