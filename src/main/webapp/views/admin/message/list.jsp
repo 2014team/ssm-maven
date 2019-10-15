@@ -2,9 +2,9 @@
 <html>
 <head>
     <title>留言列表</title>
+    <script type="text/javascript" src="/js/dateUtil.js"/>
    <!--easyui js与cess导入  -->
     <%@include file="/views/admin/common/easyui.jsp" %>
-    <script type="text/javascript" src="/js/date.js"></script>
     
     <script type="text/javascript">
         $(function(){

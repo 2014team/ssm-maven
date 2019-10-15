@@ -1,6 +1,9 @@
 //创建时间格式化显示
 var Common = {
 	    DateFormatter : function(value, row, index) {	
+	    if(!value){
+	    	return value;
+	    }	
 		var crtTime = new Date(value.time);
 		return dateFtt("yyyy-MM-dd hh:mm:ss", crtTime); //直接调用公共JS里面的时间类处理的办法  
 	}
