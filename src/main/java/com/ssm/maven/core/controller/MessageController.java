@@ -26,16 +26,13 @@ public class MessageController {
     @Resource
     private MessageService messageService;
     private static final Logger log = Logger.getLogger(MessageController.class);// 日志文件
-
-    
-
-   
+  
     /**
     * @Title: list
     * @Description: 留言列表
     * @param page
     * @param rows
-    * @param s_message
+    * @param message
     * @param response
     * @return
     * @throws Exception
@@ -51,7 +48,7 @@ public class MessageController {
             paramMap.put("start", pageBean.getStart());
             paramMap.put("size",  pageBean.getPageSize());
         }
-        
+        log.info("message : "+message.toString());
         // 查找参数处理
         messageService.searchParamHandler(paramMap, message);
         
@@ -68,6 +65,27 @@ public class MessageController {
         ResponseUtil.write(response, result);
         return null;
     }
-
+    
+    /**
+    * @Title: delete
+    * @Description: 删除
+    * @param ids
+    * @param response
+    * @return
+    * @throws Exception
+    */
+    @RequestMapping("/del")
+    public String delete(@RequestParam(value = "ids") String ids, HttpServletResponse response) throws Exception {
+        JSONObject result = new JSONObject();
+        String[] idsStr = ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+        	messageService.delete(Integer.parseInt(idsStr[i]));
+        }
+        result.put("success", true);
+        log.info("ids: " + ids);
+        ResponseUtil.write(response, result);
+        return null;
+    }
+    
     
 }

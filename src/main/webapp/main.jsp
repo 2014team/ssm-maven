@@ -79,6 +79,14 @@
         </div>
         
         
+          <div title="用户管理" data-options="iconCls:'icon-item'"
+             style="padding:10px;border:none;">
+            <a href="javascript:openTab(' 用户列表','/admin/user/list.jsp','icon-lxr')"
+               class="easyui-linkbutton"
+               data-options="plain:true,iconCls:'icon-lxr'" style="width: 150px;">
+                管理员列表</a>
+        </div>
+        
           <div title="留言管理" data-options="iconCls:'icon-item'"
              style="padding:10px;border:none;">
             <a href="javascript:openTab(' 留言列表','/admin/message/list.jsp','icon-lxr')"

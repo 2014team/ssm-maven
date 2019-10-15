@@ -55,5 +55,11 @@
         </where>
     </select>
     
+    
+    <delete id="delete" parameterType="Integer">
+        delete from admin_message
+        where id=#{id}
+    </delete>
+    
 	
 </mapper> 

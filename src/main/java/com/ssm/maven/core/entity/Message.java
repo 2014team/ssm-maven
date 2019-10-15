@@ -44,4 +44,12 @@ public class Message extends BaseBean {
 		this.demands = demands;
 	}
 
+	@Override
+	public String toString() {
+
+		return "Message [userName="	+ userName + ", mobile=" + mobile
+				+ ", demands=" + demands + "]";
+	}
+	
+
 }

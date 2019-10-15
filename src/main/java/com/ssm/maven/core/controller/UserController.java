@@ -25,11 +25,6 @@ import com.ssm.maven.core.service.UserService;
 import com.ssm.maven.core.util.ResponseUtil;
 import com.ssm.maven.core.util.StringUtil;
 
-/**
- * @author 1034683568@qq.com
- * @project_name ssm-maven
- * @date 2017-3-1
- */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -40,7 +35,6 @@ public class UserController {
 
     /**
      * 登录
-     *
      * @param user
      * @param request
      * @return
@@ -54,7 +48,7 @@ public class UserController {
             user.setPassword("");
         }
         User resultUser = userService.login(user);
-        log.info("request: user/login , user: " + user.toString());
+        log.info("user: " + user.toString());
         if (resultUser == null) {
             request.setAttribute("user", user);
             request.setAttribute("errorMsg", "请认真核对账号、密码！");
@@ -66,7 +60,6 @@ public class UserController {
             return "redirect:/main.jsp";
         }
     }
-
 
     /**
      * 修改密码
