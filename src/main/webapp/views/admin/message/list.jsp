@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>留言列表</title>
-    <script type="text/javascript" src="/js/dateUtil.js"/>
    <!--easyui js与cess导入  -->
     <%@include file="/views/admin/common/easyui.jsp" %>
-    
+    <script type="text/javascript" src="/js/dateUtil.js"></script>
+   
     <script type="text/javascript">
         $(function(){
 			 $('#ss').searchbox({
@@ -58,7 +58,7 @@
 
 <!-- 搜索 -->
 <div id="tb" style="padding-top: 10px;padding-bottom: 10px;">
-	<div> 
+	<div style="float: left;"> 
 			<a
             href="javascript:delMessage()" class="easyui-linkbutton"
             iconCls="icon-remove" plain="true">删除</a>
@@ -71,7 +71,9 @@
 		    <div data-options="name:'mobile'">手机号码</div>
 		    <div data-options="name:'demands'">咨询项目</div>
 		</div>
+		
 	</div>
+	
 
 	
 	
