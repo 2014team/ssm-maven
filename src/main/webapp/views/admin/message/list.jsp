@@ -4,7 +4,7 @@
     <title>留言列表</title>
    <!--easyui js与cess导入  -->
     <%@include file="/views/admin/common/easyui.jsp" %>
-    <script type="text/javascript" src="/js/dateUtil.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dateUtil.js"></script>
    
     <script type="text/javascript">
         $(function(){
